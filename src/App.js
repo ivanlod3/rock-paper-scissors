@@ -49,5 +49,5 @@ function UserNotLogged({ children, userName }) {
   if (!isLogged(userName)) {
     return children;
   }
-  return <Navigate to="/game" state={{ from: location }} replace />;
+  return <Navigate to={-1} state={{ from: location }} replace />;
 }
