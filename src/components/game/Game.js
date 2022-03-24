@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import './Game.css';
 import { useNavigate } from 'react-router-dom';
 import GameButton from '../game-button/GameButton';
-import { gameLogic } from '../../services/Game';
+import { gameLogic, gameOptions } from '../../services/Game';
 import { getUserData, logOut, saveUserData } from '../../services/User';
 import { Button } from '../button/Button';
 
@@ -20,12 +20,6 @@ function Game({ userName }) {
     const game = gameLogic(currentGame);
     setCurrentGame({ ...game });
   }, [currentGame]);
-
-  const gameOptions = [
-    { name: 'Rock', iconString: 'FaHandRock' },
-    { name: 'Paper', iconString: 'FaHandPaper' },
-    { name: 'Scissors', iconString: 'FaHandScissors' }
-  ];
 
   const handleExitClick = useCallback(() => {
     logOut();

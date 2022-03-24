@@ -3,4 +3,10 @@ function gameLogic(currentGame) {
   return { ...currentGame, score: currentGame.score + 1 };
 }
 
-export { gameLogic };
+const gameOptions = [
+  { name: 'rock', iconString: 'FaHandRock' },
+  { name: 'paper', iconString: 'FaHandPaper' },
+  { name: 'scissors', iconString: 'FaHandScissors' }
+];
+
+export { gameLogic, gameOptions };
