@@ -15,23 +15,28 @@ Test rock paper scissors game in a pwa app made with React
 -----
 
 <a name="install"></a>
+
 ## Installation
 
 ```bash
 npm install
 ```
 
+-----
 
+<a name="run"></a>
+
+## Run dev
+
+```bash
+npm start
+```
 
 <a name="propsapi"></a>
+
 ## Props API
 
-
 ### Game
-
-
-
-
 
 -----
 
