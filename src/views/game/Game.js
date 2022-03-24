@@ -1,25 +1,29 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import './Game.css';
 import { useNavigate } from 'react-router-dom';
-import GameButton from '../../components/game-button/GameButton';
-import { gameLogic, gameOptions } from '../../services/Game';
-import { getUserData, logOut, saveUserData } from '../../services/User';
+import { GameButton } from '../../components/game-button/GameButton';
+import { gameOptions, play } from '../../services/Game';
+import { getUser, logOut, saveUser } from '../../services/User';
 import { Button } from '../../components/button/Button';
 
 function Game({ userName }) {
   const navigate = useNavigate();
-  const [currentGame, setCurrentGame] = useState(
-    getUserData(userName) || { score: 0 }
+  const [currentUser, setCurrentUser] = useState(
+    getUser(userName) || { name: userName, score: 0 }
   );
 
   useEffect(() => {
-    saveUserData(userName, currentGame);
+    saveUser(currentUser);
   });
 
-  const handleGameButtonClick = useCallback(() => {
-    const game = gameLogic(currentGame);
-    setCurrentGame({ ...game });
-  }, [currentGame]);
+  const handleGameButtonClick = useCallback(
+    (playerOption) => {
+      const { score } = currentUser;
+      const result = play(playerOption);
+      setCurrentUser({ ...currentUser, score: score + result });
+    },
+    [currentUser]
+  );
 
   const handleExitClick = useCallback(() => {
     logOut();
@@ -28,7 +32,7 @@ function Game({ userName }) {
 
   return (
     <main className="Game">
-      <span>User: {userName}</span>
+      <span>User: {currentUser.name}</span>
       <article className="buttons">
         {gameOptions.map(({ name, iconString }) => (
           <GameButton
@@ -40,7 +44,7 @@ function Game({ userName }) {
         ))}
       </article>
       <article>
-        <span>Score: {currentGame.score}</span>
+        <span>Score: {currentUser.score}</span>
       </article>
       <footer>
         <Button className="btn btn-primary" onClick={handleExitClick}>

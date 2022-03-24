@@ -14,12 +14,24 @@ function getLoggedUser() {
   return localStorage.getItem('currentPlayer');
 }
 
-function getUserData(userName) {
-  return JSON.parse(localStorage.getItem(userName));
+function getUserList() {
+  return JSON.parse(localStorage.getItem('userList')) || [];
 }
 
-function saveUserData(userName, currentGame) {
-  localStorage.setItem(userName, JSON.stringify(currentGame));
+function getUser(name) {
+  const userList = getUserList();
+  return userList.find((player) => player.name === name);
 }
 
-export { logIn, logOut, isLogged, getLoggedUser, getUserData, saveUserData };
+function saveUser({ name, score }) {
+  const userList = getUserList();
+  const existingUser = userList.find((player) => player.name === name);
+  if (existingUser) {
+    existingUser.score = score;
+  } else {
+    userList.push({ name, score });
+  }
+  localStorage.setItem('userList', JSON.stringify(userList));
+}
+
+export { logIn, logOut, isLogged, getLoggedUser, getUser, saveUser };

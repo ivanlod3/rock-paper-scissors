@@ -1,6 +1,15 @@
 // TODO game logic
-function gameLogic(currentGame) {
-  return { ...currentGame, score: currentGame.score + 1 };
+
+function getComputerOption() {
+  return Math.floor(Math.random() * 3);
+}
+
+function play(playerOption) {
+  const result = 1;
+  if (playerOption === getComputerOption()) {
+    return result;
+  }
+  return result;
 }
 
 const gameOptions = [
@@ -9,4 +18,4 @@ const gameOptions = [
   { name: 'scissors', iconString: 'FaHandScissors' }
 ];
 
-export { gameLogic, gameOptions };
+export { play, gameOptions };

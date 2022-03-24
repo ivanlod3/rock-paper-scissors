@@ -2,7 +2,7 @@ import React from 'react';
 import * as FontAwesome from 'react-icons/fa';
 import './GameButton.css';
 
-function GameButton({ name, iconString, onGameButtonClick }) {
+export function GameButton({ name, iconString, onGameButtonClick }) {
   const icon = React.createElement(FontAwesome[iconString]);
   return (
     <button type="button" className="GameButton" onClick={onGameButtonClick}>
@@ -11,5 +11,3 @@ function GameButton({ name, iconString, onGameButtonClick }) {
     </button>
   );
 }
-
-export default GameButton;
