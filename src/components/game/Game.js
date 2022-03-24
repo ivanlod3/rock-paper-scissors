@@ -22,9 +22,9 @@ const Game = (props) => {
 
   return (
     <main className="Game">
-      <span>Usuario: {props.userName}</span>
+      <span>User: {props.userName}</span>
       <article>
-        {["Piedra", "Papel", "Tijera"].map((name) => (
+        {["Rock", "Paper", "Scissors"].map((name) => (
           <GameButton
             key={name}
             onGameButtonClick={handleGameButtonClick}
@@ -33,11 +33,11 @@ const Game = (props) => {
         ))}
       </article>
       <article>
-        <span>Puntuación: {currentGame.score}</span>
+        <span>Score: {currentGame.score}</span>
       </article>
       <footer>
         <button className="standard" onClick={() => navigate("/")}>
-          Salir
+          Exit
         </button>
       </footer>
     </main>

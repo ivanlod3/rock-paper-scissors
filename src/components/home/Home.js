@@ -25,13 +25,13 @@ function Home(props) {
           <input
             className="standard"
             type="text"
-            placeholder="Escribe tu nombre"
+            placeholder="User name *"
             required
             onChange={handleInputChange}
           />
           <nav className="nav">
             <button className="standard" type="submit">
-              Enviar
+              Start
             </button>
           </nav>
         </form>
