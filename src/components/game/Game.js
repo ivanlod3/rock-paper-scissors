@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import GameButton from "../game-button/GameButton";
 import { gameLogic } from "../../services/Game";
 import { getUserData, saveUserData } from "../../services/User";
+import { Button } from "../button/Button";
 
 const Game = ({ userName }) => {
   const navigate = useNavigate();
@@ -18,15 +19,21 @@ const Game = ({ userName }) => {
     setCurrentGame({ ...game });
   }
 
+  const gameOptions = [
+    { name: "Rock", iconString: "FaHandRock" },
+    { name: "Paper", iconString: "FaHandPaper" },
+    { name: "Scissors", iconString: "FaHandScissors" },
+  ];
   return (
     <main className="Game">
       <span>User: {userName}</span>
-      <article>
-        {["Rock", "Paper", "Scissors"].map((name) => (
+      <article className="buttons">
+        {gameOptions.map(({ name, iconString }) => (
           <GameButton
             key={name}
-            onGameButtonClick={handleGameButtonClick}
             name={name}
+            iconString={iconString}
+            onGameButtonClick={handleGameButtonClick}
           />
         ))}
       </article>
@@ -34,9 +41,9 @@ const Game = ({ userName }) => {
         <span>Score: {currentGame.score}</span>
       </article>
       <footer>
-        <button className="standard" onClick={() => navigate("/")}>
-          Exit
-        </button>
+        <Button className={"btn btn-primary"} onClick={() => navigate("/")}>
+          {"Exit"}
+        </Button>
       </footer>
     </main>
   );

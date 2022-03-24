@@ -1,3 +1,11 @@
 .Game {
   text-align: center;
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  justify-items: center;
+  align-items: center;
+}
+
+.buttons {
+  display: flex;
 }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
+import { Button } from "../button/Button";
 
 function Home({ onUsernameChange }) {
   const navigate = useNavigate();
@@ -17,22 +18,25 @@ function Home({ onUsernameChange }) {
     navigate("/game");
   }
 
+  const buttonText = "Start";
+  const buttonClass = "btn btn-primary";
+  const buttonType = "submit";
   return (
     <div className="Home">
       <header className="header">Home</header>
-      <main className="main">
+      <main>
         <form onSubmit={handleSubmit}>
           <input
-            className="standard"
+            className="input"
             type="text"
             placeholder="User name *"
             required
             onChange={handleInputChange}
           />
           <nav className="nav">
-            <button className="standard" type="submit">
-              Start
-            </button>
+            <Button className={buttonClass} type={buttonType}>
+              {buttonText}
+            </Button>
           </nav>
         </form>
       </main>

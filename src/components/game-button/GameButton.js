@@ -1,12 +1,14 @@
-const GameButton = ({ name, onGameButtonClick }) => {
+import React from "react";
+import * as FontAwesome from "react-icons/fa";
+import "./GameButton.css";
+
+const GameButton = ({ name, iconString, onGameButtonClick }) => {
+  const icon = React.createElement(FontAwesome[iconString]);
   return (
-    <button
-      //FIXME change button styles
-      className={`standard ${name}`}
-      onClick={onGameButtonClick}
-    >
-      {name}
-    </button>
+    <div className="GameButton" onClick={onGameButtonClick}>
+      <div>{icon}</div>
+      <span className="tooltip">{name}</span>
+    </div>
   );
 };
 
