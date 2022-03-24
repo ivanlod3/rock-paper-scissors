@@ -20,7 +20,7 @@ describe('<GameButton />', () => {
       <GameButton
         name={testName}
         onGameButtonClick={onActionMock}
-        icon={testIcon}
+        Icon={testIcon}
       />
     );
   });

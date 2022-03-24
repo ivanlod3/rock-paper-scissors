@@ -17,9 +17,9 @@ function Game({ userName }) {
   });
 
   const handleGameButtonClick = useCallback(
-    (playerOption) => {
+    async (playerOption) => {
       const { score } = currentUser;
-      const result = play(playerOption);
+      const result = await play(playerOption);
       setCurrentUser({ ...currentUser, score: score + result });
     },
     [currentUser]
@@ -34,13 +34,14 @@ function Game({ userName }) {
     <main className="Game">
       <span>User: {currentUser.name}</span>
       <article className="buttons">
-        {gameOptions.map(({ name, icon }) => (
+        {gameOptions.map(({ option, iconComponent }) => (
           <GameButton
-            key={name}
-            name={name}
-            icon={icon}
+            key={option}
+            option={option}
             onGameButtonClick={handleGameButtonClick}
-          />
+          >
+            {iconComponent}
+          </GameButton>
         ))}
       </article>
       <article>
