@@ -5,6 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 .GameButton {
+  color: rgba(255, 255, 255, 0.75);
   position: relative;
   background-color: rgba(255, 255, 255, 0);
   border-radius: 50%;
@@ -64,5 +65,5 @@
 .GameButton:hover .tooltip,
 .GameButton:hover .tooltip::before {
   background-color: #ea6b21;
-  color: rgba(255, 255, 255, 0.69);
+  color: rgb(255, 255, 255);
 }
