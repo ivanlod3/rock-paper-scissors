@@ -1,11 +1,13 @@
 import React from 'react';
-import * as FontAwesome from 'react-icons/fa';
 import './GameButton.css';
 
-export function GameButton({ name, iconString, onGameButtonClick }) {
-  const icon = React.createElement(FontAwesome[iconString]);
+export function GameButton({ name, icon, onGameButtonClick }) {
   return (
-    <button type="button" className="GameButton" onClick={onGameButtonClick}>
+    <button
+      type="button"
+      className="GameButton"
+      onClick={() => onGameButtonClick(name)}
+    >
       <div>{icon}</div>
       <span className="tooltip">{name}</span>
     </button>

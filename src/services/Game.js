@@ -1,21 +1,34 @@
-// TODO game logic
+import { FaHandPaper, FaHandRock, FaHandScissors } from 'react-icons/fa';
+import React from 'react';
+
+const gameOptions = [
+  { name: 'rock', icon: <FaHandRock /> },
+  { name: 'paper', icon: <FaHandPaper /> },
+  { name: 'scissors', icon: <FaHandScissors /> }
+];
 
 function getComputerOption() {
-  return Math.floor(Math.random() * 3);
+  const optionArray = gameOptions.map((option) => {
+    return option.name;
+  });
+  return optionArray[Math.floor(Math.random() * 3)];
+}
+
+function gameLogic(playerOption, computerOption) {
+  const logic = {
+    'rock vs paper': 'paper',
+    'rock vs scissors': 'rock',
+    'paper vs scissors': 'scissors'
+  };
+  return (
+    logic[`${playerOption} vs ${computerOption}`] ||
+    logic[`${computerOption} vs ${playerOption}`]
+  );
 }
 
 function play(playerOption) {
-  const result = 1;
-  if (playerOption === getComputerOption()) {
-    return result;
-  }
-  return result;
+  const result = gameLogic(playerOption, getComputerOption());
+  return playerOption === result ? 1 : 0;
 }
-
-const gameOptions = [
-  { name: 'rock', iconString: 'FaHandRock' },
-  { name: 'paper', iconString: 'FaHandPaper' },
-  { name: 'scissors', iconString: 'FaHandScissors' }
-];
 
 export { play, gameOptions };

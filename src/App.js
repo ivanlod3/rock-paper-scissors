@@ -27,12 +27,12 @@ function App() {
         <Route
           path="/"
           element={
-            <UserNotLogged userName={userName}>
+            <RedirectToGamePageIfLogged userName={userName}>
               <Home
                 userName={userName}
                 onUsernameChange={handleUserNameChange}
               />
-            </UserNotLogged>
+            </RedirectToGamePageIfLogged>
           }
         />
         <Route path="/game" element={<Game userName={userName} />} />
@@ -44,10 +44,10 @@ function App() {
 
 export default App;
 
-function UserNotLogged({ children, userName }) {
+function RedirectToGamePageIfLogged({ children, userName }) {
   const location = useLocation();
-  if (!isLogged(userName)) {
-    return children;
+  if (isLogged(userName)) {
+    return <Navigate to="/game" state={{ from: location }} replace />;
   }
-  return <Navigate to={-1} state={{ from: location }} replace />;
+  return children;
 }

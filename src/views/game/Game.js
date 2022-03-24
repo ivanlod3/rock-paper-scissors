@@ -34,11 +34,11 @@ function Game({ userName }) {
     <main className="Game">
       <span>User: {currentUser.name}</span>
       <article className="buttons">
-        {gameOptions.map(({ name, iconString }) => (
+        {gameOptions.map(({ name, icon }) => (
           <GameButton
             key={name}
             name={name}
-            iconString={iconString}
+            icon={icon}
             onGameButtonClick={handleGameButtonClick}
           />
         ))}
