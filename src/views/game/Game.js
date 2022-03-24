@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import './Game.css';
 import { useNavigate } from 'react-router-dom';
-import GameButton from '../game-button/GameButton';
+import GameButton from '../../components/game-button/GameButton';
 import { gameLogic, gameOptions } from '../../services/Game';
 import { getUserData, logOut, saveUserData } from '../../services/User';
-import { Button } from '../button/Button';
+import { Button } from '../../components/button/Button';
 
 function Game({ userName }) {
   const navigate = useNavigate();

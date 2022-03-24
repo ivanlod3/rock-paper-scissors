@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import './Home.css';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '../button/Button';
+import { Button } from '../../components/button/Button';
 
 function Home({ onUsernameChange, userName }) {
   const navigate = useNavigate();
