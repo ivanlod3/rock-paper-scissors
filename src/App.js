@@ -1,25 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
+import Game from "./components/game/Game";
+import Home from "./components/home/Home";
+import { getGame } from "./services/Game";
+import { getUserName } from "./services/User";
 
 function App() {
+  const [userName, setUserName] = useState("");
+
+  function handleUserNameChange(name) {
+    setUserName(name);
+    const game = getGame(name) || { score: 0 };
+    localStorage.setItem(name, JSON.stringify(game));
+  }
+
+  function UserNameExists({ children }) {
+    let location = useLocation();
+    if (getUserName(userName)) {
+      return children;
+    }
+    return <Navigate to="/" state={{ from: location }} replace />;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home userName={userName} onUsernameChange={handleUserNameChange} />
+          }
+        />
+        <Route
+          path="/game"
+          element={
+            <UserNameExists>
+              <Game userName={userName} />
+            </UserNameExists>
+          }
+        />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

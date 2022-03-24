@@ -1,0 +1,26 @@
+.Home {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    'header'
+    'main'
+    '.';
+  align-items: center;
+  justify-items: center;
+  height: 100vh;
+}
+
+.header {
+  grid-area: header;
+}
+
+.main {
+  grid-area: main;
+}
+
+.nav {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  padding: 1rem;
+}

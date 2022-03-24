@@ -6,4 +6,11 @@ function saveGame(userName, currentGame) {
   localStorage.setItem(userName, JSON.stringify(currentGame));
 }
 
-export { getGame, saveGame };
+// TODO game logic
+function gameLogic(currentGame) {
+  console.log(currentGame.score);
+  currentGame.score = currentGame.score + 1;
+  return currentGame;
+}
+
+export { getGame, saveGame, gameLogic };
