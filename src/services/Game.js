@@ -18,7 +18,7 @@ async function getComputerOption() {
     setTimeout(resolve, 1000);
   });
   const optionArray = gameOptions.map((option) => {
-    return option.id;
+    return option.name;
   });
   return optionArray[Math.floor(Math.random() * 3)];
 }
@@ -30,10 +30,9 @@ function gameLogic(playerOption, computerOption) {
   );
 }
 
-async function play(playerOption) {
-  const computerOption = await getComputerOption();
+function play(playerOption, computerOption) {
   const result = gameLogic(playerOption, computerOption);
   return playerOption === result ? 1 : 0;
 }
 
-export { play, gameOptions };
+export { play, getComputerOption, gameOptions };
