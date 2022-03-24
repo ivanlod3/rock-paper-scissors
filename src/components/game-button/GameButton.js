@@ -1,11 +1,11 @@
-const GameButton = (props) => {
+const GameButton = ({ name, onGameButtonClick }) => {
   return (
     <button
       //FIXME change button styles
-      className={`standard ${props.name}`}
-      onClick={props.onGameButtonClick}
+      className={`standard ${name}`}
+      onClick={onGameButtonClick}
     >
-      {props.name}
+      {name}
     </button>
   );
 };

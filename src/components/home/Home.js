@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
 
-function Home(props) {
+function Home({ onUsernameChange }) {
   const navigate = useNavigate();
   // FIXME change variable name
   const [inputText, setInputText] = useState("");
@@ -13,7 +13,7 @@ function Home(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    props.onUsernameChange(inputText);
+    onUsernameChange(inputText);
     navigate("/game");
   }
 

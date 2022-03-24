@@ -4,15 +4,13 @@ import { gameLogic, getGame, saveGame } from "../../services/Game";
 import GameButton from "../game-button/GameButton";
 import "./Game.css";
 
-const Game = (props) => {
+const Game = ({ userName }) => {
   const navigate = useNavigate();
 
-  const [currentGame, setCurrentGame] = useState(
-    getGame(props.userName) || { score: 0 }
-  );
+  const [currentGame, setCurrentGame] = useState(getGame(userName));
 
   useEffect(() => {
-    saveGame(props.userName, currentGame);
+    saveGame(userName, currentGame);
   });
 
   function handleGameButtonClick() {
@@ -22,7 +20,7 @@ const Game = (props) => {
 
   return (
     <main className="Game">
-      <span>User: {props.userName}</span>
+      <span>User: {userName}</span>
       <article>
         {["Rock", "Paper", "Scissors"].map((name) => (
           <GameButton
