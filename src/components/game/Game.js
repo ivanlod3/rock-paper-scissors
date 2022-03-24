@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { gameLogic, getGame, saveGame } from "../../services/Game";
-import GameButton from "../game-button/GameButton";
 import "./Game.css";
+import { useNavigate } from "react-router-dom";
+import GameButton from "../game-button/GameButton";
+import { gameLogic } from "../../services/Game";
+import { getUserData, saveUserData } from "../../services/User";
 
 const Game = ({ userName }) => {
   const navigate = useNavigate();
-
-  const [currentGame, setCurrentGame] = useState(getGame(userName));
+  const [currentGame, setCurrentGame] = useState(getUserData(userName));
 
   useEffect(() => {
-    saveGame(userName, currentGame);
+    saveUserData({ userName, currentGame });
   });
 
   function handleGameButtonClick() {

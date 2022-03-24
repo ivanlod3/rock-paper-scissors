@@ -8,21 +8,20 @@ import {
 } from "react-router-dom";
 import Game from "./components/game/Game";
 import Home from "./components/home/Home";
-import { getGame } from "./services/Game";
-import { getUserName } from "./services/User";
+import { getUserData, saveUserData } from "./services/User";
 
 function App() {
   const [userName, setUserName] = useState("");
 
   function handleUserNameChange(name) {
     setUserName(name);
-    const game = getGame(name) || { score: 0 };
-    localStorage.setItem(name, JSON.stringify(game));
+    const currentGame = getUserData(name) || { score: 0 };
+    saveUserData({ userName: name, currentGame });
   }
 
   function UserNameExists({ children }) {
     let location = useLocation();
-    if (getUserName(userName)) {
+    if (getUserData(userName)) {
       return children;
     }
     return <Navigate to="/" state={{ from: location }} replace />;

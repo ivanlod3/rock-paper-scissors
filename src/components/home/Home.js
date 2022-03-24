@@ -5,15 +5,15 @@ import { useNavigate } from "react-router-dom";
 function Home({ onUsernameChange }) {
   const navigate = useNavigate();
   // FIXME change variable name
-  const [inputText, setInputText] = useState("");
+  const [userName, setUserName] = useState("");
 
   function handleInputChange(e) {
-    setInputText(e.target.value);
+    setUserName(e.target.value);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    onUsernameChange(inputText);
+    onUsernameChange(userName);
     navigate("/game");
   }
 
