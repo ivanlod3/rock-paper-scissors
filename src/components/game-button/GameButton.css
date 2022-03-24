@@ -2,7 +2,7 @@
     Auther: Abdelrhman Said
 */
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 .GameButton {
   position: relative;
@@ -38,7 +38,7 @@
 
 .GameButton .tooltip::before {
   position: absolute;
-  content: "";
+  content: '';
   height: 8px;
   width: 8px;
   background-color: #ffffff;
@@ -57,9 +57,8 @@
 
 .GameButton:hover span,
 .GameButton:hover .tooltip {
-  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
-
 
 .GameButton:hover,
 .GameButton:hover .tooltip,

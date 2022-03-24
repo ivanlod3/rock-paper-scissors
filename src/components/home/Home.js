@@ -1,26 +1,28 @@
-import React, { useState } from "react";
-import "./Home.css";
-import { useNavigate } from "react-router-dom";
-import { Button } from "../button/Button";
+import React, { useCallback, useState } from 'react';
+import './Home.css';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '../button/Button';
 
-function Home({ onUsernameChange }) {
+function Home({ onUsernameChange, userName }) {
   const navigate = useNavigate();
   // FIXME change variable name
-  const [userName, setUserName] = useState("");
+  const [name, setName] = useState(userName || '');
 
   function handleInputChange(e) {
-    setUserName(e.target.value);
+    setName(e.target.value);
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    onUsernameChange(userName);
-    navigate("/game");
-  }
+  const handleSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      onUsernameChange(name);
+      navigate('/game');
+    },
+    [name, onUsernameChange, navigate]
+  );
 
-  const buttonText = "Start";
-  const buttonClass = "btn btn-primary";
-  const buttonType = "submit";
+  const buttonText = 'Start';
+  const buttonClass = 'btn btn-primary';
   return (
     <div className="Home">
       <header className="header">Home</header>
@@ -34,7 +36,7 @@ function Home({ onUsernameChange }) {
             onChange={handleInputChange}
           />
           <nav className="nav">
-            <Button className={buttonClass} type={buttonType}>
+            <Button className={buttonClass} onClick={handleSubmit} submit>
               {buttonText}
             </Button>
           </nav>
