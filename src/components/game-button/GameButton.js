@@ -1,14 +1,17 @@
 import React from 'react';
 import './GameButton.css';
 
-export function GameButton({ children, option, onGameButtonClick }) {
+export function GameButton({
+  option: { name: option, iconComponent },
+  onGameButtonClick
+}) {
   return (
     <button
       type="button"
       className="GameButton"
       onClick={() => onGameButtonClick(option)}
     >
-      <div>{children}</div>
+      <div>{iconComponent}</div>
       <span className="tooltip">{option}</span>
     </button>
   );

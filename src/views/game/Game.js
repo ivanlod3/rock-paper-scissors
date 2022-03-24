@@ -34,14 +34,12 @@ function Game({ userName }) {
     <main className="Game">
       <span>User: {currentUser.name}</span>
       <article className="buttons">
-        {gameOptions.map(({ option, iconComponent }) => (
+        {gameOptions.map((option) => (
           <GameButton
-            key={option}
+            key={option.name}
             option={option}
             onGameButtonClick={handleGameButtonClick}
-          >
-            {iconComponent}
-          </GameButton>
+          />
         ))}
       </article>
       <article>

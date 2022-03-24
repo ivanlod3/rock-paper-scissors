@@ -18,7 +18,7 @@ async function getComputerOption() {
     setTimeout(resolve, 1000);
   });
   const optionArray = gameOptions.map((option) => {
-    return option.name;
+    return option.id;
   });
   return optionArray[Math.floor(Math.random() * 3)];
 }
