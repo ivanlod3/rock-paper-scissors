@@ -55,7 +55,6 @@ function Game({ userName }) {
   }, [navigate]);
 
   function getStatusText() {
-    console.log(`texto`);
     if (computerChoosing) {
       return 'Computer is choosing...';
     }
