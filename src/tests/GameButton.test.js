@@ -26,7 +26,7 @@ describe('<GameButton />', () => {
   });
 
   test('renders game at start', () => {
-    const span = component.getByText('rock');
+    const span = component.getByText(testName);
     expect(span).toBeInTheDocument();
   });
 });
