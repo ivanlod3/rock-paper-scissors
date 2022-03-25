@@ -10,7 +10,7 @@ Test rock paper scissors game in a pwa app made with React
 -----
 
 - **[Installation](#install)**
-- **[Props API](#propsapi)**
+- **[Run](#run)**
 
 -----
 
