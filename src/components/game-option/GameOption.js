@@ -1,19 +1,19 @@
 import React from 'react';
-import './GameButton.css';
+import './GameOption.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export function GameButton({
+export function GameOption({
   option: { name, beats, icon },
   disabled,
-  onGameButtonClick
+  onGameOptionClick
 }) {
   return (
     <button
       type="button"
-      className="GameButton"
+      className="GameOption"
       aria-label={`Choose ${name}`}
       disabled={disabled}
-      onClick={(e) => onGameButtonClick(e, { name, beats })}
+      onClick={(e) => onGameOptionClick(e, { name, beats })}
     >
       <div>
         <FontAwesomeIcon icon={icon} />

@@ -46,7 +46,7 @@ npm start
 
 -----
 
-### GameButton
+### GameOption
 
 
 

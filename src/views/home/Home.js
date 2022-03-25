@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import './Home.css';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '../../components/button/Button';
+import { GameButton } from '../../components/button/GameButton';
 
 function Home({ onUsernameChange, userName }) {
   const navigate = useNavigate();
@@ -40,14 +40,14 @@ function Home({ onUsernameChange, userName }) {
             onChange={handleInputChange}
           />
           <nav className="nav">
-            <Button
+            <GameButton
               className={buttonClass}
               tabIndex="0"
               ariaLabel="Start game"
               submit
             >
               {buttonText}
-            </Button>
+            </GameButton>
           </nav>
         </form>
       </main>

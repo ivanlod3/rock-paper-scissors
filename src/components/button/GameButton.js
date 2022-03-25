@@ -1,7 +1,7 @@
 import React from 'react';
-import './Button.css';
+import './GameButton.css';
 
-export function Button({
+export function GameButton({
   children,
   className,
   submit = false,

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-.GameButton {
+.GameOption {
   color: rgba(255, 255, 255, 0.75);
   position: relative;
   background-color: rgba(255, 255, 255, 0);
@@ -18,11 +18,11 @@
   transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.GameButton svg {
+.GameOption svg {
   font-size: 2em;
  }
 
-.GameButton .tooltip {
+.GameOption .tooltip {
   position: absolute;
   top: 0;
   font-size: 14px;
@@ -36,7 +36,7 @@
   transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.GameButton .tooltip::before {
+.GameOption .tooltip::before {
   position: absolute;
   content: '';
   height: 8px;
@@ -48,29 +48,29 @@
   transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.GameButton.on:disabled .tooltip {
+.GameOption.on:disabled .tooltip {
   top: -45px;
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
 
-.GameButton.on:disabled span,
-.GameButton.on:disabled .tooltip {
+.GameOption.on:disabled span,
+.GameOption.on:disabled .tooltip {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
 
-.GameButton.on:disabled {
+.GameOption.on:disabled {
   background-color: rgba(234, 107, 33, 0.75);
   color: rgba(255, 255, 255, 0.56);
 }
-.GameButton.on .tooltip,
-.GameButton.on .tooltip::before {
+.GameOption.on .tooltip,
+.GameOption.on .tooltip::before {
   background-color: rgb(234, 107, 33);
   color: rgba(255, 255, 255, 0.62);
 }
 
-.GameButton:disabled {
+.GameOption:disabled {
   color: rgba(255, 255, 255, 0.5);
   background-color: rgba(255, 255, 255, 0.1);
   cursor: default;

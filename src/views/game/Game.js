@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import './Game.css';
 import { useNavigate } from 'react-router-dom';
-import { GameButton } from '../../components/game-button/GameButton';
+import { GameOption } from '../../components/game-option/GameOption';
 import { play } from '../../services/Game';
 import { getUser, logOut, saveUser } from '../../services/User';
-import { Button } from '../../components/button/Button';
+import { GameButton } from '../../components/button/GameButton';
 import { OPTIONS, STATUS } from '../../constants/constants';
 import { SCORE } from '../../constants/strings';
 
@@ -46,11 +46,11 @@ function Game({ userName }) {
       <span>User: {currentUser.name}</span>
       <article className="buttons">
         {OPTIONS.map((option) => (
-          <GameButton
+          <GameOption
             key={option.name}
             option={option}
             disabled={status !== STATUS.IDLE}
-            onGameButtonClick={handleChooseOption}
+            onGameOptionClick={handleChooseOption}
           />
         ))}
       </article>
@@ -58,13 +58,13 @@ function Game({ userName }) {
         <span>{statusText}</span>
       </article>
       <footer>
-        <Button
+        <GameButton
           className="btn btn-primary"
           disabled={status !== STATUS.IDLE}
           onClick={handleExitClick}
         >
           Exit
-        </Button>
+        </GameButton>
       </footer>
     </main>
   );
