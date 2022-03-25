@@ -60,11 +60,14 @@
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
 
-.GameButton.on:disabled,
-.GameButton.on:disabled .tooltip,
-.GameButton.on:disabled .tooltip::before {
+.GameButton.on:disabled {
   background-color: rgba(234, 107, 33, 0.75);
   color: rgba(255, 255, 255, 0.56);
+}
+.GameButton.on .tooltip,
+.GameButton.on .tooltip::before {
+  background-color: rgb(234, 107, 33);
+  color: rgba(255, 255, 255, 0.62);
 }
 
 .GameButton:disabled {
