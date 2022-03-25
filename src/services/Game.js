@@ -1,23 +1,22 @@
 import { FaHandPaper, FaHandRock, FaHandScissors } from 'react-icons/fa';
 import React from 'react';
+import { wait } from './Util';
 
-const gameOptions = [
+const GAME_OPTIONS = [
   { name: 'rock', iconComponent: <FaHandRock /> },
   { name: 'paper', iconComponent: <FaHandPaper /> },
   { name: 'scissors', iconComponent: <FaHandScissors /> }
 ];
 
-const logic = {
+const LOGIC = {
   'rock vs paper': 'paper',
   'rock vs scissors': 'rock',
   'paper vs scissors': 'scissors'
 };
 
 async function getComputerOption() {
-  await new Promise((resolve) => {
-    setTimeout(resolve, 1000);
-  });
-  const optionArray = gameOptions.map((option) => {
+  await wait(1000);
+  const optionArray = GAME_OPTIONS.map((option) => {
     return option.name;
   });
   return optionArray[Math.floor(Math.random() * 3)];
@@ -25,8 +24,8 @@ async function getComputerOption() {
 
 function gameLogic(playerOption, computerOption) {
   return (
-    logic[`${playerOption} vs ${computerOption}`] ||
-    logic[`${computerOption} vs ${playerOption}`]
+    LOGIC[`${playerOption} vs ${computerOption}`] ||
+    LOGIC[`${computerOption} vs ${playerOption}`]
   );
 }
 
@@ -35,4 +34,4 @@ function play(playerOption, computerOption) {
   return playerOption === result ? 1 : 0;
 }
 
-export { play, getComputerOption, gameOptions };
+export { play, getComputerOption, GAME_OPTIONS };
