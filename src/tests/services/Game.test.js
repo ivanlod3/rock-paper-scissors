@@ -24,21 +24,4 @@ describe('Game Service', () => {
       expect(optionNames).toContainEqual(result);
     });
   });
-
-  // FIXME: mock the getComputerOption function
-  // test('returns the correct result', async () => {
-  //   const testComputerOption = {
-  //     name: 'scissors',
-  //     beats: 'paper'
-  //   };
-  //   jest
-  //     .spyOn(exportedForTesting, 'getComputerOption')
-  //     .mockImplementation(() => testComputerOption);
-  //   expect(await exportedForTesting.getComputerOption()).toEqual(
-  //     testComputerOption
-  //   );
-  //   const playerOption = { name: 'rock', beats: 'scissors' };
-  //   const result = play(jest.fn(), playerOption);
-  //   expect(await result).toEqual({ name: 'win', score: 1, text: 'You win!' });
-  // });
 });

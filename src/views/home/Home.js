@@ -30,7 +30,7 @@ function Home({ onUsernameChange, userName }) {
           <input
             id="nameInput"
             className="input"
-            title="Enter your name"
+            title="Only letters and numbers"
             type="text"
             placeholder="User name *"
             pattern="[a-zA-Z0-9]+"
