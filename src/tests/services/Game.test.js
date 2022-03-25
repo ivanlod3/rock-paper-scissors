@@ -24,4 +24,47 @@ describe('Game Service', () => {
       expect(optionNames).toContainEqual(result);
     });
   });
+
+  test('returns player wins', async () => {
+    const testComputerOption = {
+      name: 'scissors',
+      beats: 'paper'
+    };
+    const playerOption = { name: 'rock', beats: 'scissors' };
+    const result = exportedForTesting.getResult(
+      playerOption,
+      testComputerOption
+    );
+    expect(await result).toEqual({ name: 'win', score: 1, text: 'You win!' });
+  });
+
+  test('returns player lose', async () => {
+    const testComputerOption = {
+      name: 'scissors',
+      beats: 'paper'
+    };
+    const playerOption = { name: 'paper', beats: 'rock' };
+    const result = exportedForTesting.getResult(
+      playerOption,
+      testComputerOption
+    );
+    expect(await result).toEqual({ name: 'lose', score: 0, text: 'You lost!' });
+  });
+
+  test("returns it's a tie", async () => {
+    const testComputerOption = {
+      name: 'scissors',
+      beats: 'paper'
+    };
+    const playerOption = { name: 'scissors', beats: 'paper' };
+    const result = exportedForTesting.getResult(
+      playerOption,
+      testComputerOption
+    );
+    expect(await result).toEqual({
+      name: 'tie',
+      score: 0,
+      text: "It's a tie!"
+    });
+  });
 });
