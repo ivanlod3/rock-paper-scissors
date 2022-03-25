@@ -29,14 +29,24 @@ function Home({ onUsernameChange, userName }) {
       <main>
         <form onSubmit={handleSubmit}>
           <input
+            id="nameInput"
             className="input"
+            title="Enter your name"
             type="text"
             placeholder="User name *"
+            pattern="[a-zA-Z0-9]+"
+            tabIndex="0"
+            aria-label="User name"
             required
             onChange={handleInputChange}
           />
           <nav className="nav">
-            <Button className={buttonClass} onClick={handleSubmit} submit>
+            <Button
+              className={buttonClass}
+              tabIndex="0"
+              ariaLabel="Start game"
+              submit
+            >
               {buttonText}
             </Button>
           </nav>

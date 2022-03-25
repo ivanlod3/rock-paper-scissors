@@ -9,7 +9,8 @@ export function GameButton({
     <button
       type="button"
       className="GameButton"
-      onClick={() => onGameButtonClick(option)}
+      onClick={() => onGameButtonClick({ name, beats })}
+      aria-label={`Choose ${name}`}
     >
       <div>{iconComponent}</div>
       <span className="tooltip">{option}</span>
