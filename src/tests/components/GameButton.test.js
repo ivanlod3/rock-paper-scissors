@@ -1,14 +1,13 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import { FaHandRock } from 'react-icons/fa';
 import { GameButton } from '../../components/game-button/GameButton';
 
 describe('<GameButton />', () => {
   let component;
   const onActionMock = jest.fn();
   const option = {
-    iconComponent: <FaHandRock />,
+    icon: ['fa-solid', 'fa-hand-back-fist'],
     name: 'rock'
   };
   beforeEach(() => {
@@ -21,7 +20,7 @@ describe('<GameButton />', () => {
     );
   });
 
-  test('renders game at start', () => {
+  test('renders button text', () => {
     const span = component.getByText(option.name);
     expect(span).toBeInTheDocument();
   });

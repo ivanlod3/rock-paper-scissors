@@ -1,8 +1,9 @@
 import React from 'react';
 import './GameButton.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export function GameButton({
-  option: { name, beats, iconComponent },
+  option: { name, beats, icon },
   disabled,
   onGameButtonClick
 }) {
@@ -14,7 +15,9 @@ export function GameButton({
       disabled={disabled}
       onClick={(e) => onGameButtonClick(e, { name, beats })}
     >
-      <div>{iconComponent}</div>
+      <div>
+        <FontAwesomeIcon icon={icon} />
+      </div>
       <span className="tooltip">{name}</span>
     </button>
   );

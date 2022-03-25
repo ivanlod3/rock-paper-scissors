@@ -2,9 +2,11 @@ import React, { useCallback, useEffect, useState } from 'react';
 import './Game.css';
 import { useNavigate } from 'react-router-dom';
 import { GameButton } from '../../components/game-button/GameButton';
-import { OPTIONS, play, STATUS } from '../../services/Game';
+import { play } from '../../services/Game';
 import { getUser, logOut, saveUser } from '../../services/User';
 import { Button } from '../../components/button/Button';
+import { OPTIONS, STATUS } from '../../constants/constants';
+import { SCORE } from '../../constants/strings';
 
 function Game({ userName }) {
   const navigate = useNavigate();
@@ -12,11 +14,13 @@ function Game({ userName }) {
     getUser(userName) || { name: userName, score: 0 }
   );
   const [status, setStatus] = useState(STATUS.IDLE);
-  const [statusText, setStatusText] = useState(`Score: ${currentUser.score}`);
+  const [statusText, setStatusText] = useState(
+    `${SCORE}: ${currentUser.score}`
+  );
 
   useEffect(() => {
     saveUser(currentUser);
-    setStatusText(`Score: ${currentUser.score}`);
+    setStatusText(`${SCORE}: ${currentUser.score}`);
   }, [currentUser]);
 
   const handleChooseOption = useCallback(

@@ -1,30 +1,14 @@
-import { FaHandPaper, FaHandRock, FaHandScissors } from 'react-icons/fa';
-import React from 'react';
 import { getRandomNumber, wait } from './Util';
-
-const STATUS = {
-  IDLE: 'IDLE',
-  PLAYING: 'PLAYING'
-};
-
-const OPTIONS = [
-  { name: 'rock', beats: 'scissors', iconComponent: <FaHandRock /> },
-  { name: 'paper', beats: 'rock', iconComponent: <FaHandPaper /> },
-  { name: 'scissors', beats: 'paper', iconComponent: <FaHandScissors /> }
-];
-
-const RESULTS = {
-  win: { name: 'win', text: 'You win!', score: 1 },
-  lose: { name: 'lose', text: 'You lose!', score: 0 },
-  tie: { name: 'tie', text: "It's a tie!", score: 0 }
-};
+import { OPTIONS, RESULTS } from '../constants/constants';
+import { STATUS_TEXT } from '../constants/strings';
+import { WAITING_TIME } from '../constants/settings';
 
 async function getComputerOption() {
-  await wait(1000);
-  const optionArray = OPTIONS.map(({ beats, name }) => {
+  await wait(WAITING_TIME);
+  const optionNames = OPTIONS.map(({ beats, name }) => {
     return { name, beats };
   });
-  return optionArray[getRandomNumber()];
+  return optionNames[getRandomNumber()];
 }
 
 function getResult(playerOption, computerOption) {
@@ -37,16 +21,21 @@ function getResult(playerOption, computerOption) {
 }
 
 async function play(setStatusText, playerOption) {
-  setStatusText(`You chose ${playerOption.name}`);
-  await wait(1000);
-  setStatusText('Computer is choosing...');
+  setStatusText(`${STATUS_TEXT.PLAYER_CHOSE} ${playerOption.name}`);
+  await wait(WAITING_TIME);
+  setStatusText(STATUS_TEXT.COMPUTER_CHOOSING);
   const computerOption = await getComputerOption();
   const result = getResult(playerOption, computerOption);
-  setStatusText(`Computer chose ${computerOption.name}`);
-  await wait(1000);
+  setStatusText(`${STATUS_TEXT.COMPUTER_CHOSE} ${computerOption.name}`);
+  await wait(WAITING_TIME);
   setStatusText(result.text);
-  await wait(1000);
+  await wait(WAITING_TIME);
   return result;
 }
 
-export { play, getComputerOption, OPTIONS, RESULTS, STATUS };
+const exportedForTesting = {
+  getComputerOption,
+  getResult
+};
+
+export { play, RESULTS, exportedForTesting };
