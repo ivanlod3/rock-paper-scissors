@@ -16,6 +16,7 @@ function Game({ userName }) {
 
   useEffect(() => {
     saveUser(currentUser);
+    setStatusText(`Score: ${currentUser.score}`);
   }, [currentUser]);
 
   const handleChooseOption = useCallback(
@@ -24,7 +25,6 @@ function Game({ userName }) {
       const result = await play(setStatusText, playerOption);
       const { score } = currentUser;
       setCurrentUser({ ...currentUser, score: score + result.score });
-      setStatusText(`Score: ${currentUser.score}`);
       setStatus(STATUS.IDLE);
     },
     [currentUser]
