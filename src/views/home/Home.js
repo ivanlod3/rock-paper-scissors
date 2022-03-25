@@ -5,7 +5,6 @@ import { Button } from '../../components/button/Button';
 
 function Home({ onUsernameChange, userName }) {
   const navigate = useNavigate();
-  // FIXME change variable name
   const [name, setName] = useState(userName || '');
 
   function handleInputChange(e) {
@@ -18,7 +17,7 @@ function Home({ onUsernameChange, userName }) {
       onUsernameChange(name);
       navigate('/game');
     },
-    [name, onUsernameChange, navigate]
+    [name, navigate, onUsernameChange]
   );
 
   const buttonText = 'Start';

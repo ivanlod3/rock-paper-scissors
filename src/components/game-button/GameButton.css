@@ -49,21 +49,27 @@
   transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.GameButton:hover .tooltip {
+.GameButton:not([disabled]):hover .tooltip {
   top: -45px;
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
 
-.GameButton:hover span,
-.GameButton:hover .tooltip {
+.GameButton:not([disabled]):hover span,
+.GameButton:not([disabled]):hover .tooltip {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
 
-.GameButton:hover,
-.GameButton:hover .tooltip,
-.GameButton:hover .tooltip::before {
+.GameButton:not([disabled]):hover,
+.GameButton:not([disabled]):hover .tooltip,
+.GameButton:not([disabled]):hover .tooltip::before {
   background-color: #ea6b21;
   color: rgb(255, 255, 255);
+}
+
+.GameButton:disabled {
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.1);
+  cursor: not-allowed;
 }

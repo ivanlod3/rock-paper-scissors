@@ -7,6 +7,7 @@ export function Button({
   submit = false,
   tabIndex,
   ariaLabel,
+  disabled,
   onClick
 }) {
   return (
@@ -16,6 +17,7 @@ export function Button({
       onClick={onClick}
       tabIndex={tabIndex}
       aria-label={ariaLabel}
+      disabled={disabled}
     >
       {children}
     </button>

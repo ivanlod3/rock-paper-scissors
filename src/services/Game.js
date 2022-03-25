@@ -1,37 +1,52 @@
 import { FaHandPaper, FaHandRock, FaHandScissors } from 'react-icons/fa';
 import React from 'react';
-import { wait } from './Util';
+import { getRandomNumber, wait } from './Util';
+
+const GAME_STATUS = {
+  IDLE: 'IDLE',
+  PLAYING: 'PLAYING'
+};
 
 const GAME_OPTIONS = [
-  { name: 'rock', iconComponent: <FaHandRock /> },
-  { name: 'paper', iconComponent: <FaHandPaper /> },
-  { name: 'scissors', iconComponent: <FaHandScissors /> }
+  { name: 'rock', beats: 'scissors', iconComponent: <FaHandRock /> },
+  { name: 'paper', beats: 'rock', iconComponent: <FaHandPaper /> },
+  { name: 'scissors', beats: 'paper', iconComponent: <FaHandScissors /> }
 ];
 
-const LOGIC = {
-  'rock vs paper': 'paper',
-  'rock vs scissors': 'rock',
-  'paper vs scissors': 'scissors'
+const GAME_RESULTS = {
+  win: { name: 'win', text: 'You win!', score: 1 },
+  lose: { name: 'lose', text: 'You lose!', score: 0 },
+  tie: { name: 'tie', text: "It's a tie!", score: 0 }
 };
 
 async function getComputerOption() {
   await wait(1000);
-  const optionArray = GAME_OPTIONS.map((option) => {
-    return option.name;
+  const optionArray = GAME_OPTIONS.map(({ beats, name }) => {
+    return { name, beats };
   });
-  return optionArray[Math.floor(Math.random() * 3)];
+  return optionArray[getRandomNumber()];
 }
 
-function gameLogic(playerOption, computerOption) {
-  return (
-    LOGIC[`${playerOption} vs ${computerOption}`] ||
-    LOGIC[`${computerOption} vs ${playerOption}`]
-  );
+function getResult(playerOption, computerOption) {
+  if (playerOption.name === computerOption.name) {
+    return GAME_RESULTS.tie;
+  }
+  return playerOption.beats === computerOption.name
+    ? GAME_RESULTS.win
+    : GAME_RESULTS.lose;
 }
 
-function play(playerOption, computerOption) {
-  const result = gameLogic(playerOption, computerOption);
-  return playerOption === result ? 1 : 0;
+async function play(setStatusText, playerOption) {
+  setStatusText(`You chose ${playerOption.name}`);
+  await wait(1000);
+  setStatusText('Computer is choosing...');
+  const computerOption = await getComputerOption();
+  const result = getResult(playerOption, computerOption);
+  setStatusText(`Computer chose ${computerOption.name}`);
+  await wait(1000);
+  setStatusText(result.text);
+  await wait(1000);
+  return result;
 }
 
-export { play, getComputerOption, GAME_OPTIONS };
+export { play, getComputerOption, GAME_OPTIONS, GAME_RESULTS, GAME_STATUS };
