@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { GameOption } from '../../components/game-option/GameOption';
 import { play } from '../../services/Game';
 import { getUser, logOut, saveUser } from '../../services/User';
-import { GameButton } from '../../components/button/GameButton';
+import { GameButton } from '../../components/game-button/GameButton';
 import { OPTIONS, STATUS } from '../../constants/constants';
 import { SCORE } from '../../constants/strings';
 

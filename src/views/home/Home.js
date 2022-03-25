@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import './Home.css';
 import { useNavigate } from 'react-router-dom';
-import { GameButton } from '../../components/button/GameButton';
+import { GameButton } from '../../components/game-button/GameButton';
 
 function Home({ onUsernameChange, userName }) {
   const navigate = useNavigate();
