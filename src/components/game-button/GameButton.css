@@ -1,7 +1,3 @@
-/*
-    Auther: Abdelrhman Said
-*/
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 .GameButton {
@@ -9,19 +5,22 @@
   position: relative;
   background-color: rgba(255, 255, 255, 0);
   border-radius: 50%;
-  padding: 15px;
-  margin: 10px;
-  width: 50px;
-  height: 50px;
-  font-size: 18px;
+  margin: 0.5em;
+  width: 6em;
+  height: 6em;
+  font-size: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1em 1em rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
+
+.GameButton svg {
+  font-size: 2em;
+ }
 
 .GameButton .tooltip {
   position: absolute;
@@ -49,27 +48,27 @@
   transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.GameButton:not([disabled]):hover .tooltip {
+.GameButton.on:disabled .tooltip {
   top: -45px;
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
 
-.GameButton:not([disabled]):hover span,
-.GameButton:not([disabled]):hover .tooltip {
+.GameButton.on:disabled span,
+.GameButton.on:disabled .tooltip {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
 
-.GameButton:not([disabled]):hover,
-.GameButton:not([disabled]):hover .tooltip,
-.GameButton:not([disabled]):hover .tooltip::before {
-  background-color: #ea6b21;
-  color: rgb(255, 255, 255);
+.GameButton.on:disabled,
+.GameButton.on:disabled .tooltip,
+.GameButton.on:disabled .tooltip::before {
+  background-color: rgba(234, 107, 33, 0.75);
+  color: rgba(255, 255, 255, 0.56);
 }
 
 .GameButton:disabled {
   color: rgba(255, 255, 255, 0.5);
   background-color: rgba(255, 255, 255, 0.1);
-  cursor: not-allowed;
+  cursor: default;
 }

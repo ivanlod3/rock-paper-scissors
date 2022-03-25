@@ -25,11 +25,13 @@ function Game({ userName }) {
 
   const handleChooseOption = useCallback(
     async (e, playerOption) => {
+      e.target.closest('button').classList.add('on');
       setStatus(STATUS.PLAYING);
       const result = await play(setStatusText, playerOption);
       const { score } = currentUser;
       setCurrentUser({ ...currentUser, score: score + result.score });
       setStatus(STATUS.IDLE);
+      e.target.closest('button').classList.remove('on');
     },
     [currentUser]
   );

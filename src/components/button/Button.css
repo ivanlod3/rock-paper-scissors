@@ -12,7 +12,7 @@
   flex-direction: row;
   flex-shrink: 0;
   font-family: Eina01, sans-serif;
-  font-size: 16px;
+  font-size: 1.5em;
   font-weight: 800;
   justify-content: center;
   line-height: 24px;
@@ -20,7 +20,7 @@
   min-height: 64px;
   outline: none;
   overflow: visible;
-  padding: 19px 26px;
+  padding: 1em 2em;
   pointer-events: auto;
   position: relative;
   text-align: center;
