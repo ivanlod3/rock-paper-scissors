@@ -34,7 +34,7 @@ npm start
 
 -----
 
-#Check the example deployed on Netlify [here](https://profound-baklava-26711b.netlify.app/)
+# Check the example deployed on Netlify [here](https://profound-baklava-26711b.netlify.app/)
 
 
 -----
